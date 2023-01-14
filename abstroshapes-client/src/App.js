@@ -1,8 +1,8 @@
 import "./styles/App.css";
-import AbstroShapesNFT from "./AbstroShapesNFT.json";
 import { ethers } from "ethers";
 import { ScaleLoader } from "react-spinners";
 import React, { useEffect, useState } from "react";
+import AbstroShapesNFT from "./NFT/AbstroShapesNFT.json";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState("");
@@ -131,7 +131,7 @@ const App = () => {
 
   useEffect(() => {
     checkIfWalletIsConnected();
-  }, []);
+  });
 
   return (
     <div className="App">
@@ -142,6 +142,7 @@ const App = () => {
             Each unique. Each beautiful. Each abstract.
           </p>
           <p className="sub-text">Get your NFT today.</p>
+          {currentUser && <p className="sub-text-sm">Connected - {currentUser}</p>}
           {currentUser === "" ? (
             renderNotConnectedContainer()
           ) : (
